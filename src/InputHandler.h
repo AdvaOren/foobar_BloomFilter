@@ -19,6 +19,7 @@ public:
     vector<string> parseLine(string line);
     int getType(string line);
     bool checkInitialLineInput(vector<string> line);
+    bool checkLineValidation(string line, int lineType);
 
 };
 

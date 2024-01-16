@@ -108,3 +108,29 @@ bool InputHandler::checkInitialLineInput(vector<string> line)
     }
     return true;
 }
+
+bool InputHandler::checkLineValidation(string line, int lineType)
+{
+    vector<string> arguments = parseLine(line);
+    switch (lineType)
+    {
+        //this is the case of the inital line in the code
+        case 0:
+            return checkInitialLineInput(arguments);
+        //this is the case of option 1 - adding to black list
+        case 1:
+            if (arguments.size() != 2)
+            {
+                return false;
+            }
+            return getType(arguments[0]) == 1 && checkURL(arguments[1]);
+        //this is the case of option 2 - check  if site is in the blacklist
+        case 2:
+            if (arguments.size() != 2)
+            {
+                return false;
+            }
+            return getType(arguments[0]) == 2 && checkURL(arguments[1]);
+    }
+    return false;
+}
