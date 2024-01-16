@@ -15,10 +15,10 @@ using std::vector;
 class InputHandler
 {
 public:
-    static bool checkURL(string url);
-    static vector<string> parseLine(string line);
+    bool checkURL(string url);
+    vector<string> parseLine(string line);
     static int getType(string line);
-    static bool checkInitialLineInput(vector<string> line);
+    bool checkInitialLineInput(vector<string> line);
     static bool checkLineValidation(string line, int lineType);
     static string getURL(string line);
 
