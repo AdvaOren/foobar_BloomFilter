@@ -45,3 +45,20 @@ TEST(ParseLine, BasicTest) {
     vector<string> r7;
     EXPECT_EQ(tester.parseLine(""),r7);
 }
+
+TEST(GetType, BasicTest) {
+    InputHandler tester;
+    EXPECT_EQ(tester.getType("1 www.example.com"),1);
+    EXPECT_EQ(tester.getType("1 8"),1);
+    EXPECT_EQ(tester.getType("1 .example.com"),1);
+    EXPECT_EQ(tester.getType("1 com"),1);
+    EXPECT_EQ(tester.getType("1 8 2 5"),1);
+    EXPECT_EQ(tester.getType("1 0"),1);
+    EXPECT_EQ(tester.getType("2 did it work?"),2);
+    EXPECT_EQ(tester.getType("2 0 1 2"),2);
+    EXPECT_EQ(tester.getType("2 0 aa ss"),2);
+    EXPECT_EQ(tester.getType("2 www.example.com"),2);
+    EXPECT_EQ(tester.getType("2 www.example.com0"),2);
+    EXPECT_EQ(tester.getType("2 www.text.com"),2);
+}
+
