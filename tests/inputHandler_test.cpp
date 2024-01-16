@@ -154,7 +154,7 @@ TEST(GetURL, BasicTest) {
     InputHandler tester;
     EXPECT_EQ(tester.getURL("2 www.example.com"), "www.example.com");
     EXPECT_EQ(tester.getURL("2 www.example.com0"), "www.example.com0");
-    //EXPECT_EQ(tester.getURL("2 www.another site.com"), "www.another site.com"); to check
+    EXPECT_EQ(tester.getURL("2 www.another site.com"), "www.another site.com");
     EXPECT_EQ(tester.getURL("1 www.a.a"), "www.a.a");
     EXPECT_EQ(tester.getURL("1 www.a.com"), "www.a.com");
     EXPECT_EQ(tester.getURL("1 www.exam.ple.com"), "www.exam.ple.com");
