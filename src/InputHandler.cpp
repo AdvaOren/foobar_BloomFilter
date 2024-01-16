@@ -74,3 +74,37 @@ int InputHandler::getType(string line)
     }
     return atoi(type.c_str());
 }
+
+/* The function check if the argument match the initial line
+ * Input: line arguments
+ * Output: match or not */
+bool InputHandler::checkInitialLineInput(vector<string> line)
+{
+    if (line.size() < NUM_OF_HASH_FUNCS || line.size() > MAX_INIT_LINE_SIZE)
+    {
+        return false;
+    }
+    //check if the size of the bit array is a number.
+    if (line[0].find_first_not_of(ALL_THE_NUMBERS) != string::npos)
+    {
+        return false;
+    }
+    //check if the hash arguments are 1 or 2
+    if (!(line[1].compare("1") == 0 || line[1].compare("2") == 0))
+    {
+        return false;
+    }
+    if (line.size() == MAX_INIT_LINE_SIZE)
+    {
+        if (!(line[2].compare("1") == 0 || line[2].compare("2") == 0))
+        {
+            return false;
+        }
+        //check if the hash arguments are not the same
+        if (line[1].compare(line[2]) == 0)
+        {
+            return false;
+        }
+    }
+    return true;
+}

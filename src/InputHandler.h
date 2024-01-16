@@ -5,6 +5,9 @@
 #include <vector>
 
 #define ERROR -1
+#define NUM_OF_HASH_FUNCS 2
+#define ALL_THE_NUMBERS "0123456789"
+#define MAX_INIT_LINE_SIZE 3
 
 using std::string;
 using std::vector;
@@ -15,8 +18,9 @@ public:
     bool checkURL(string url);
     vector<string> parseLine(string line);
     int getType(string line);
+    bool checkInitialLineInput(vector<string> line);
 
-    };
+};
 
 
 #endif //FOOBAR_TD_INPUTHANDLER_H

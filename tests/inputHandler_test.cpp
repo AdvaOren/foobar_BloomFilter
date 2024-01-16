@@ -108,4 +108,10 @@ TEST(ValidInitialLine, BasicTest) {
 
     vector<string> line12 {"8" ,"1", "3"};
     EXPECT_FALSE(tester.checkInitialLineInput(line12));
+
+    vector<string> line13 {"8" ,"1", "1"};
+    EXPECT_FALSE(tester.checkInitialLineInput(line13));
+
+    vector<string> line14 {"8" ,"2", "2"};
+    EXPECT_FALSE(tester.checkInitialLineInput(line14));
 }
