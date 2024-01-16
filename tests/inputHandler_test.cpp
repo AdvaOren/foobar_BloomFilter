@@ -60,5 +60,11 @@ TEST(GetType, BasicTest) {
     EXPECT_EQ(tester.getType("2 www.example.com"),2);
     EXPECT_EQ(tester.getType("2 www.example.com0"),2);
     EXPECT_EQ(tester.getType("2 www.text.com"),2);
+    EXPECT_EQ(tester.getType("www.text.com"),ERROR);
+
+    EXPECT_NE(tester.getType("a"),1);
+    EXPECT_NE(tester.getType("a 1"),1);
+    EXPECT_NE(tester.getType("a"),2);
+    EXPECT_NE(tester.getType("a 2"),2);
 }
 

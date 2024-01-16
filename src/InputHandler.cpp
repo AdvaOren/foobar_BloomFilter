@@ -58,3 +58,19 @@ vector <string> InputHandler::parseLine(string line)
     }
     return arguments;
 }
+
+/* The function return the type of the line
+ * Input: the whole line
+ * Output: the type. ERROR=-1 will return if type not found */
+int InputHandler::getType(string line)
+{
+    if (line.length() == 0) {
+        return ERROR;
+    }
+    string type = parseLine(line)[0];
+    //check the
+    if (type.find_first_not_of("0123456789") != string::npos) {
+        return ERROR;
+    }
+    return atoi(type.c_str());
+}
