@@ -115,3 +115,37 @@ TEST(ValidInitialLine, BasicTest) {
     vector<string> line14 {"8" ,"2", "2"};
     EXPECT_FALSE(tester.checkInitialLineInput(line14));
 }
+
+TEST(ValidLine, AdvancedTest) {
+    InputHandler tester;
+    EXPECT_TRUE(tester.checkLineValidation("8 2 1",0));
+    EXPECT_TRUE(tester.checkLineValidation("8 1 2",0));
+    EXPECT_TRUE(tester.checkLineValidation("8 2",0));
+    EXPECT_TRUE(tester.checkLineValidation("8 1",0));
+    EXPECT_FALSE(tester.checkLineValidation("8 4 5 8 6",0));
+    EXPECT_FALSE(tester.checkLineValidation("a 8 2",0));
+    EXPECT_FALSE(tester.checkLineValidation("2",0));
+    EXPECT_FALSE(tester.checkLineValidation("a",0));
+    EXPECT_FALSE(tester.checkLineValidation("25 a",0));
+    EXPECT_FALSE(tester.checkLineValidation("",0));
+
+    EXPECT_TRUE(tester.checkLineValidation("1 www.example.com",1));
+    EXPECT_TRUE(tester.checkLineValidation("1 www.example.c.om",1));
+    EXPECT_TRUE(tester.checkLineValidation("1 www.q.q",1));
+    EXPECT_FALSE(tester.checkLineValidation("2 www.example.com",1));
+    EXPECT_FALSE(tester.checkLineValidation("1 wwdw.example.com",1));
+    EXPECT_FALSE(tester.checkLineValidation("1 wwdw.example.com",1));
+    EXPECT_FALSE(tester.checkLineValidation("www.example.com",1));
+    EXPECT_FALSE(tester.checkLineValidation("1",1));
+    EXPECT_FALSE(tester.checkLineValidation("",1));
+
+    EXPECT_TRUE(tester.checkLineValidation("2 www.example.com",2));
+    EXPECT_TRUE(tester.checkLineValidation("2 www.example.c.om",2));
+    EXPECT_TRUE(tester.checkLineValidation("2 www.q.q",2));
+    EXPECT_FALSE(tester.checkLineValidation("1 www.example.com",2));
+    EXPECT_FALSE(tester.checkLineValidation("2 wwdw.example.com",2));
+    EXPECT_FALSE(tester.checkLineValidation("2 wwdw.example.com",2));
+    EXPECT_FALSE(tester.checkLineValidation("www.example.com",2));
+    EXPECT_FALSE(tester.checkLineValidation("2",2));
+    EXPECT_FALSE(tester.checkLineValidation("",2));
+}
