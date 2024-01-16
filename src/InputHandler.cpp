@@ -109,6 +109,9 @@ bool InputHandler::checkInitialLineInput(vector<string> line)
     return true;
 }
 
+/* The function check if a line is match the line type
+ * Input: the whole line to check and the type of the line
+ * Output: Does the line match the type format */
 bool InputHandler::checkLineValidation(string line, int lineType)
 {
     vector<string> arguments = parseLine(line);
