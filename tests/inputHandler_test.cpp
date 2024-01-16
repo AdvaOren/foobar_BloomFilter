@@ -68,3 +68,44 @@ TEST(GetType, BasicTest) {
     EXPECT_NE(tester.getType("a 2"),2);
 }
 
+TEST(ValidInitialLine, BasicTest) {
+    InputHandler tester;
+    vector<string> line0 {"8" ,"2"};
+    EXPECT_TRUE(tester.checkInitialLineInput(line0));
+
+    vector<string> line1 {"888" ,"1"};
+    EXPECT_TRUE(tester.checkInitialLineInput(line1));
+
+    vector<string> line2 {"10" ,"1" ,"2"};
+    EXPECT_TRUE(tester.checkInitialLineInput(line2));
+
+    vector<string> line3 {"125" ,"2" ,"1"};
+    EXPECT_TRUE(tester.checkInitialLineInput(line3));
+
+    vector<string> line4 {"a" ,"4" ,"1" ,"3" ,"5"};
+    EXPECT_FALSE(tester.checkInitialLineInput(line4));
+
+    vector<string> line5 {"a"};
+    EXPECT_FALSE(tester.checkInitialLineInput(line5));
+
+    vector<string> line6 {"4"};
+    EXPECT_FALSE(tester.checkInitialLineInput(line6));
+
+    vector<string> line7 {"4" ,"a"};
+    EXPECT_FALSE(tester.checkInitialLineInput(line7));
+
+    vector<string> line8 {"456489456" ,"1a"};
+    EXPECT_FALSE(tester.checkInitialLineInput(line8));
+
+    vector<string> line9 {};
+    EXPECT_FALSE(tester.checkInitialLineInput(line9));
+
+    vector<string> line10 {"8" ,"3"};
+    EXPECT_FALSE(tester.checkInitialLineInput(line10));
+
+    vector<string> line11 {"8" ,"1", "2", "3"};
+    EXPECT_FALSE(tester.checkInitialLineInput(line11));
+
+    vector<string> line12 {"8" ,"1", "3"};
+    EXPECT_FALSE(tester.checkInitialLineInput(line12));
+}
