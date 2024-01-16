@@ -137,3 +137,16 @@ bool InputHandler::checkLineValidation(string line, int lineType)
     }
     return false;
 }
+
+string InputHandler::getURL(string line)
+{
+    vector<string> arguments = parseLine(line);
+    string url = arguments[1];
+    if (arguments.size() > 2) {
+        for (int i = 2; i < arguments.size(); ++i)
+        {
+            url = url + " " + arguments[i];
+        }
+    }
+    return url;
+}
