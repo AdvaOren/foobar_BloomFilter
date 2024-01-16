@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "../src/InputHandler.h"
+#include "../src/InputHandler.cpp"
 #include <vector>
 
 using std::vector;
@@ -24,7 +24,7 @@ TEST(CheckURLTest, BasicTest) {
 
 TEST(ParseLine, BasicTest) {
     InputHandler tester;
-    vector<string> r1{"8","2","1"};
+    vector<string> r1{"8","1","2"};
     EXPECT_EQ(tester.parseLine("8 1 2"),r1);
 
     vector<string> r2{"aa", "ss", "dd"};

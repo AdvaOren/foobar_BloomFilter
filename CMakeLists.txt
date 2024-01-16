@@ -15,13 +15,14 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 set(SOURCE_FILES
          # this is where the code we want to test
-
+        src/InputHandler.cpp
+        src/InputHandler.h
         )
 set(TEST_FILES
         tests/test_main.cpp # this is the main for tests
                             # this file contain the tests
 
-        tests/inputHandler_test.cpp src/InputHandler.cpp src/InputHandler.h)
+        tests/inputHandler_test.cpp )
 
 
 add_executable(CalcTests ${TEST_FILES})

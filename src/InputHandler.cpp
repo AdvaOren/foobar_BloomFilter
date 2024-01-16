@@ -35,3 +35,26 @@ bool InputHandler::checkURL(string url)
     }
     return dotAppearTwice;
 }
+
+/* The function take a complete line and parse it by ' '
+ * Input: the whole line
+ * Output: the parts of the line*/
+vector <string> InputHandler::parseLine(string line)
+{
+    vector<string> arguments = vector<string>();
+    int pos = 0;
+    while ((pos = line.find(' ')) != string::npos) {
+        //take the data from the start to the first ' '
+        string argument = line.substr(0, pos);
+        //add the data
+        arguments.push_back(argument);
+        //erase the data from the line
+        line.erase(0, pos + 1);
+    }
+    //add the last argument
+    if (line.length() != 0)
+    {
+        arguments.push_back(line);
+    }
+    return arguments;
+}
