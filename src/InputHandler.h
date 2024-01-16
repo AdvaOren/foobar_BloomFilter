@@ -5,7 +5,7 @@
 
 using std::string;
 
-class inputHandler
+class InputHandler
 {
 public:
     bool checkURL(string url);
