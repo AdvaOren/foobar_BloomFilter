@@ -15,12 +15,13 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 set(SOURCE_FILES
         # this is where the code we want to test
-        src/calc.cpp
+        src/BloomFilter.cpp
+        src/BloomFilter.h
         )
 set(TEST_FILES
         ../foobar_DT/tests/test_main.cpp # this is the main for tests
         # this file contain the tests
-        tests/BF_test.cpp src/BloomFilter.cpp src/BloomFilter.h)
+        tests/BF_test.cpp )
 
 
 add_executable(CalcTests ${TEST_FILES})

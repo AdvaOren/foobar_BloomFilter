@@ -1,48 +1,73 @@
 #include <gtest/gtest.h>
 #include <vector>
-#include "BloomFilter.h"
+#include "BloomFilter.cpp"
+
 using std::vector;
 using std::hash;
 TEST(BfTest, BasicTest) {
-    int* blacklist = new int(8);
-    EXPECT_FALSE(checkIfBlackListed("", blacklist,8));
+    vector<string> blackList = vector<string>();
+    int* arr = new int[8];
+    for (int i = 0; i < 8; ++i) {
+        arr[i] = 0;
+    }
+    vector<int> hashes = vector<int>();
+    hashes.push_back(1);
+    EXPECT_FALSE(checkIfBlackListed("", arr, 8, hashes));
 }
 
 TEST(BfTest, BasicTest2) {
-    int* blackList = new int(8);
+    vector<string> blackList = vector<string>();
+    int* arr = new int[8];
     for (int i = 0; i < 8; ++i) {
-        blackList[i] = 0;
+        arr[i] = 0;
     }
-    addToBlackList("",blackList,8);
-    EXPECT_TRUE(checkIfBlackListed("",blackList,8));
-    EXPECT_FALSE(checkIfBlackListed("a",blackList,8));
-    addToBlackList("a",blackList,8);
-    EXPECT_TRUE(checkIfBlackListed("a",blackList,8));
+    vector<int> hashes = vector<int>();
+    hashes.push_back(1);
+    addToBlackList("",arr,8,hashes,blackList);
+    EXPECT_TRUE(checkIfBlackListed("",arr,8,hashes));
+    EXPECT_FALSE(checkIfBlackListed("a",arr,8,hashes));
+    addToBlackList("a",arr,8,hashes,blackList);
+    EXPECT_TRUE(checkIfBlackListed("a",arr,8,hashes));
 }
 
 TEST(ListTest, BasicTest) {
+    vector<string> blackList = vector<string>();
     hash<string> hash;
-    int* OGblackList = new int(8);
-    int *OGblacklist2 = OGblackList;
+    vector<int> hashes = vector<int>();
+    hashes.push_back(1);
+    int* OGblackList = new int[8];
     for (int i = 0; i < 8; ++i) {
         OGblackList[i] = 0;
     }
-    addToBlackList("",OGblackList,8);
-    int* blackList = getBlackList(OGblackList);
-    EXPECT_EQ(blackList[6],1);
-    addToBlackList("a",OGblacklist2,8);
-    int* blackList2 = getBlackList(OGblacklist2);
-    EXPECT_EQ(blackList2[hash("a") % 8],1);
-    EXPECT_EQ(blackList[hash("a") % 8],1);
-    delete blackList;
+    addToBlackList("",OGblackList,8,hashes,blackList);
+    EXPECT_EQ(OGblackList[6],1);
+    addToBlackList("a",OGblackList,8,hashes,blackList);
+    EXPECT_EQ(OGblackList[hash("a") % 8],1);
+    EXPECT_EQ(OGblackList[hash("a") % 8],1);
 }
 
 TEST(MultHash, BasicTest) {
-    int* blackList = new int (8);
+    vector<string> blackList = vector<string>();
+    int* arr = new int[8];
+    for (int i = 0; i < 8; ++i) {
+        arr[i] = 0;
+    }
     vector<int> hashes = vector<int>();
     hashes.push_back(1);
     hashes.push_back(2);
-    addToBlackList("www.test.com",blackList,8,hashes);
-    EXPECT_TRUE(checkIfBlackListed("www.test.com",blackList,8,hashes));
-    EXPECT_FALSE(checkIfBlackListed("www.false.com",blackList,8,hashes));
+    addToBlackList("www.test.com0",arr,8,hashes,blackList);
+    EXPECT_TRUE(checkIfBlackListed("www.test.com0",arr,8,hashes));
+    EXPECT_FALSE(checkIfBlackListed("www.false.com0",arr,8,hashes));
+}
+
+TEST(BlackListTest,BasicTest) {
+    int* array = new int[8];
+    for (int i = 0; i < 8; ++i) {
+        array[i] = 0;
+    }
+    vector<int> hashes = vector<int>();
+    hashes.push_back(1);
+    vector<string> blackList = vector<string>();
+    addToBlackList("URL",array,8,hashes,blackList);
+    EXPECT_FALSE(checkForFalsePositive("URL", blackList));
 }

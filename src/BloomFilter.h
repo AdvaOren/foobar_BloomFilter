@@ -6,10 +6,12 @@
 #define FOOBAR_DT_BLOOMFILTER_H
 
 #include <string>
-
+#include <vector>
+using std::vector;
 using std::string;
-bool checkIfBlackListed(string URL,int* blackList, int size);
-void addToBlackList(string URL, int* blackList, int size);
+bool checkIfBlackListed(string URL, int * array, int size, vector<int> hashes);
+void addToBlackList(string URL, int* array, int size, vector<int> hashes,
+                    vector<string>& blackList);
 int* getBlackList(int * blackList);
-
+bool checkForFalsePositive(string URL,vector<string>& blackList);
 #endif //FOOBAR_DT_BLOOMFILTER_H
