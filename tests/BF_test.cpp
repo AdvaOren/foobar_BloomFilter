@@ -5,7 +5,7 @@
 using std::vector;
 using std::hash;
 TEST(BfTest, BasicTest) {
-    vector<string> blackList = vector<string>();
+    map<string, string> blackList = map<string,string>();
     int* arr = new int[8];
     for (int i = 0; i < 8; ++i) {
         arr[i] = 0;
@@ -16,7 +16,7 @@ TEST(BfTest, BasicTest) {
 }
 
 TEST(BfTest, BasicTest2) {
-    vector<string> blackList = vector<string>();
+    map<string, string> blackList = map<string,string>();
     int* arr = new int[8];
     for (int i = 0; i < 8; ++i) {
         arr[i] = 0;
@@ -31,7 +31,7 @@ TEST(BfTest, BasicTest2) {
 }
 
 TEST(ListTest, BasicTest) {
-    vector<string> blackList = vector<string>();
+    map<string, string> blackList = map<string,string>();
     hash<string> hash;
     vector<int> hashes = vector<int>();
     hashes.push_back(1);
@@ -47,7 +47,7 @@ TEST(ListTest, BasicTest) {
 }
 
 TEST(MultHash, BasicTest) {
-    vector<string> blackList = vector<string>();
+    map<string, string> blackList = map<string,string>();
     int* arr = new int[8];
     for (int i = 0; i < 8; ++i) {
         arr[i] = 0;
@@ -67,7 +67,7 @@ TEST(BlackListTest,BasicTest) {
     }
     vector<int> hashes = vector<int>();
     hashes.push_back(1);
-    vector<string> blackList = vector<string>();
+    map<string, string> blackList = map<string,string>();
     addToBlackList("URL",array,8,hashes,blackList);
     EXPECT_FALSE(checkForFalsePositive("URL", blackList));
 }

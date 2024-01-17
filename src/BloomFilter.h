@@ -4,14 +4,14 @@
 
 #ifndef FOOBAR_DT_BLOOMFILTER_H
 #define FOOBAR_DT_BLOOMFILTER_H
-
+#include <map>
 #include <string>
 #include <vector>
 using std::vector;
 using std::string;
+using std::map;
 bool checkIfBlackListed(string URL, int * array, int size, vector<int> hashes);
 void addToBlackList(string URL, int* array, int size, vector<int> hashes,
-                    vector<string>& blackList);
-int* getBlackList(int * blackList);
-bool checkForFalsePositive(string URL,vector<string>& blackList);
+                    map<string,string>& blackList);
+bool checkForFalsePositive(string URL,map<string,string>& blackList);
 #endif //FOOBAR_DT_BLOOMFILTER_H

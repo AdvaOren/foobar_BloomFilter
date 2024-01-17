@@ -21,7 +21,7 @@ bool checkIfBlackListed(string URL, int* array, int size, vector<int> hashes) {
     return true;
 }
 void addToBlackList(string URL, int* array, int size, vector<int> hashes,
-                    vector<string>& blackList) {
+                    map<string,string>& blackList) {
     hash<string> hash;
     for (int hashe : hashes) {
         if (hashe == 1) {
@@ -31,17 +31,12 @@ void addToBlackList(string URL, int* array, int size, vector<int> hashes,
             array [hash(std::to_string(hash(URL))) % size] = 1;
         }
     }
-    blackList.push_back(URL);
+    blackList[URL] = URL;
 
 }
-int* getBlackList(int *blackList) {
-    return blackList;
-}
-bool checkForFalsePositive(string URL, vector<string>& blackList) {
-    for (string s:blackList) {
-        if (!URL.compare(s)) {
-            return false;
-        }
+bool checkForFalsePositive(string URL, map<string,string>& blackList) {
+    if (blackList.find(URL) != blackList.end()) {
+        return false;
     }
     return true;
 }
