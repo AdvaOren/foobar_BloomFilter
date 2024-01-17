@@ -20,7 +20,7 @@ set(SOURCE_FILES
 set(TEST_FILES
         ../foobar_DT/tests/test_main.cpp # this is the main for tests
         # this file contain the tests
-        tests/BF_test.cpp)
+        tests/BF_test.cpp src/BloomFilter.cpp src/BloomFilter.h)
 
 
 add_executable(CalcTests ${TEST_FILES})
