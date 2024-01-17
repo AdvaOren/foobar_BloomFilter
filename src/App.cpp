@@ -1,26 +1,9 @@
 #include "App.h"
 
-void App::run()
+void App::run(IMenu* menu)
 {
-    bool atStart = true;
+    ///BF bf(menu->getInitParm());
     while (true) {
-        string line;
-        getline(std::cin,line);
-        if (atStart)
-        {
-            if (!InputHandler::checkLineValidation(line,0))
-                continue;
-            atStart = false;
-            ///TODO: create bf object.
-        }
-        else
-        {
-            int type = InputHandler::getType(line);
-            if (type == ERROR || !InputHandler::checkLineValidation(line,type))
-            {
-                continue;
-            }
-            ///TODO: bf.execute(InputHandler::getURL(line))
-        }
+        ///bf.execute(menu->getNextTask(),menu->getURL());
     }
 }

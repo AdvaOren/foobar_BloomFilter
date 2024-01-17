@@ -1,14 +1,14 @@
 #ifndef FOOBAR_TD_APP_H
 #define FOOBAR_TD_APP_H
 #include <iostream>
-#include "InputHandler.h"
+#include "IMenu.h"
 
 using std::string;
 
 class App
 {
 public:
-    void run();
+    void run(IMenu* menu);
 };
 
 
