@@ -22,7 +22,7 @@ set(TEST_FILES
         tests/test_main.cpp # this is the main for tests
                             # this file contain the tests
 
-        tests/inputHandler_test.cpp )
+        tests/inputHandler_test.cpp)
 
 
 add_executable(CalcTests ${TEST_FILES})
