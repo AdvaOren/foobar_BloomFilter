@@ -3,6 +3,8 @@
 #include "BloomFilter.cpp"
 #include "singleHash.h"
 #include "doubleHash.h"
+#include "addCommand.h"
+
 using std::vector;
 using std::hash;
 TEST(BfTest, BasicTest) {
@@ -83,4 +85,18 @@ TEST(DoubleHashTest,BasicTest) {
     doubleHash dH = doubleHash(23);
     EXPECT_EQ(dH.hash("www.double.com"),
               std::hash<string>()(std::to_string(std::hash<string>()("www.double.com"))) % 23);
+}
+
+TEST(CommandAddTest, BasicTest) {
+    int* array = new int[8];
+    for (int i = 0; i < 8; ++i) {
+        array[i] = 0;
+    }
+    int index = std::hash<string>()("www.example.com") % 8;
+    addCommand add = addCommand();
+    Ihash* sH = new singleHash(8);
+    vector<Ihash*> vec = vector<Ihash*>();
+    vec.push_back(sH);
+    add.execute("www.example.com", array,8,vec);
+    EXPECT_EQ(array[index],1);
 }

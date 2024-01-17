@@ -6,7 +6,7 @@
 #define FOOBAR_DT_DOUBLEHASH_H
 
 #include <Ihash.h>
-class doubleHash: Ihash{
+class doubleHash: public Ihash{
 private:
     int size;
 public:
