@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include <vector>
 #include "BloomFilter.cpp"
-
+#include "singleHash.h"
 using std::vector;
 using std::hash;
 TEST(BfTest, BasicTest) {
@@ -70,4 +70,10 @@ TEST(BlackListTest,BasicTest) {
     map<string, string> blackList = map<string,string>();
     addToBlackList("URL",array,8,hashes,blackList);
     EXPECT_FALSE(checkForFalsePositive("URL", blackList));
+}
+
+TEST(SingleHashTest, BasicTest) {
+    singleHash sH = singleHash(6);
+    vector<int> vec = sH.hash("");
+    EXPECT_EQ(vec.at(0),std::hash<string>()("") % 6);
 }
