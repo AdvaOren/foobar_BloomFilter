@@ -17,10 +17,10 @@ class InputHandler
 public:
     bool checkURL(string url);
     vector<string> parseLine(string line);
-    static int getType(string line);
+    int getType(string line);
     bool checkInitialLineInput(vector<string> line);
-    static bool checkLineValidation(string line, int lineType);
-    static string getURL(string line);
+    bool checkLineValidation(string line, int lineType);
+    string getURL(string line);
 
 };
 

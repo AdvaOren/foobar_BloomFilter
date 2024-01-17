@@ -129,11 +129,16 @@ bool InputHandler::checkLineValidation(string line, int lineType)
             return getType(arguments[0]) == 1 && checkURL(arguments[1]);
         //this is the case of option 2 - check  if site is in the blacklist
         case 2:
-            if (arguments.size() != 2)
+            if (arguments.size() < 2)
             {
                 return false;
             }
-            return getType(arguments[0]) == 2 && checkURL(arguments[1]);
+            string url;
+            for (int i = 1; i < arguments.size(); ++i)
+            {
+                url += arguments[i];
+            }
+            return getType(arguments[0]) == 2 && checkURL(url);
     }
     return false;
 }

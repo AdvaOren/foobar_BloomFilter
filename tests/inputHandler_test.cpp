@@ -141,6 +141,7 @@ TEST(ValidLine, AdvancedTest) {
 
     EXPECT_TRUE(tester.checkLineValidation("2 www.example.com",2));
     EXPECT_TRUE(tester.checkLineValidation("2 www.example.c.om",2));
+    EXPECT_TRUE(tester.checkLineValidation("2 www.exam ple.c.om",2));
     EXPECT_TRUE(tester.checkLineValidation("2 www.q.q",2));
     EXPECT_FALSE(tester.checkLineValidation("1 www.example.com",2));
     EXPECT_FALSE(tester.checkLineValidation("2 wwdw.example.com",2));
