@@ -8,8 +8,8 @@
 #include <string>
 
 using std::string;
-bool checkIfBlackListed(string URL);
-void addToBlackList(string URL);
-int* getBlackList();
+bool checkIfBlackListed(string URL,int* blackList, int size);
+void addToBlackList(string URL, int* blackList, int size);
+int* getBlackList(int * blackList);
 
 #endif //FOOBAR_DT_BLOOMFILTER_H
