@@ -8,7 +8,8 @@
 using std::string;
 class addCommand: public Icommand {
 public:
-    void execute(string URL, int* array, int size, vector<Ihash*> hashes) override;
+    void execute(string URL, int* array, vector<Ihash*> hashes,
+                 vector<string>* blackList) override;
 };
 
 

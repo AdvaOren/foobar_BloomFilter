@@ -97,6 +97,7 @@ TEST(CommandAddTest, BasicTest) {
     Ihash* sH = new singleHash(8);
     vector<Ihash*> vec = vector<Ihash*>();
     vec.push_back(sH);
-    add.execute("www.example.com", array,8,vec);
+    vector<string> vec2 = vector<string>();
+    add.execute("www.example.com", array,vec,&vec2);
     EXPECT_EQ(array[index],1);
 }

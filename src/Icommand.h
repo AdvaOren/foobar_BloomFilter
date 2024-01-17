@@ -8,9 +8,11 @@
 
 #include <string>
 #include "Ihash.h"
+using std::string;
 class Icommand {
 public:
-    virtual void execute(std::string, int* array, int size, vector<Ihash*> hashes) = 0;
+    virtual void execute(std::string, int* array, vector<Ihash*> hashes,
+                         vector<string>* blackList) = 0;
 };
 
 
