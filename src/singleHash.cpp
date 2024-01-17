@@ -5,11 +5,9 @@
 #include "singleHash.h"
 
 
-vector<int> singleHash::hash(std::string URL){
+int singleHash::hash(std::string URL){
    std::hash<std::string> h;
-   vector<int> vec = vector<int>();
-   vec.push_back(h(URL) % this->size);
-    return vec;
+    return h(URL) % this->size;
 }
 
 singleHash::singleHash(int size) {

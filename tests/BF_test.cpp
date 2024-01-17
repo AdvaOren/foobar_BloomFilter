@@ -2,6 +2,7 @@
 #include <vector>
 #include "BloomFilter.cpp"
 #include "singleHash.h"
+#include "doubleHash.h"
 using std::vector;
 using std::hash;
 TEST(BfTest, BasicTest) {
@@ -74,6 +75,12 @@ TEST(BlackListTest,BasicTest) {
 
 TEST(SingleHashTest, BasicTest) {
     singleHash sH = singleHash(6);
-    vector<int> vec = sH.hash("");
-    EXPECT_EQ(vec.at(0),std::hash<string>()("") % 6);
+    int index = sH.hash("");
+    EXPECT_EQ(index,std::hash<string>()("") % 6);
+}
+
+TEST(DoubleHashTest,BasicTest) {
+    doubleHash dH = doubleHash(23);
+    EXPECT_EQ(dH.hash("www.double.com"),
+              std::hash<string>()(std::to_string(std::hash<string>()("www.double.com"))) % 23);
 }

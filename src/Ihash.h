@@ -9,7 +9,7 @@
 using std::vector;
 class Ihash {
 public:
-   virtual vector<int> hash(std::string URL) = 0;
+   virtual int hash(std::string URL) = 0;
 };
 
 

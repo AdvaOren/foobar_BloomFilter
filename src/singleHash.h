@@ -11,7 +11,7 @@ private:
     int size;
 public:
     singleHash(int size);
-    vector<int> hash(std::string URL);
+    int hash(std::string URL) override;
 };
 
 
