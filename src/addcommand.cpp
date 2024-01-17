@@ -6,5 +6,8 @@
 
 
 void addCommand::execute(string URL, int *array, int size, vector<Ihash*> hashes) {
-    return;
+    for (Ihash* h: hashes) {
+            array[h->hash(URL)] = 1;
+    }
+
 }
