@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
+#include <vector>
 #include "BloomFilter.h"
-
+using std::vector;
 using std::hash;
 TEST(BfTest, BasicTest) {
     int* blacklist = new int(8);
@@ -34,4 +35,14 @@ TEST(ListTest, BasicTest) {
     EXPECT_EQ(blackList2[hash("a") % 8],1);
     EXPECT_EQ(blackList[hash("a") % 8],1);
     delete blackList;
+}
+
+TEST(MultHash, BasicTest) {
+    int* blackList = new int (8);
+    vector<int> hashes = vector<int>();
+    hashes.push_back(1);
+    hashes.push_back(2);
+    addToBlackList("www.test.com",blackList,8,hashes);
+    EXPECT_TRUE(checkIfBlackListed("www.test.com",blackList,8,hashes));
+    EXPECT_FALSE(checkIfBlackListed("www.false.com",blackList,8,hashes));
 }
