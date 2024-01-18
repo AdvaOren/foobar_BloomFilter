@@ -19,7 +19,8 @@ set(SOURCE_FILES
         src/InputHandler.h
         src/Menu.h
         src/Menu.cpp
-
+        src/BloomFilter.cpp
+        src/BloomFilter.h
         )
 set(TEST_FILES
         tests/test_main.cpp # this is the main for tests
@@ -27,6 +28,7 @@ set(TEST_FILES
 
         tests/inputHandler_test.cpp
         tests/menu_test.cpp
+        tests/BF_test.cpp src/Ihash.h src/SingleHash.cpp src/SingleHash.h src/DoubleHash.cpp src/DoubleHash.h src/Icommand.h src/Addcommand.cpp src/AddCommand.h src/CheckCommand.cpp src/CheckCommand.h
         )
 
 
