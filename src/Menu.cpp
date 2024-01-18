@@ -13,7 +13,8 @@ Menu::Menu(std::istream& input)
     {
         //getline(std::cin,currLine);
         std::getline(input,currLine);
-        currLine.erase(currLine.begin() + currLine.length()-1);
+        if (currLine[currLine.length()-1] == '\r')
+            currLine.erase(currLine.begin() + currLine.length()-1);
     } while (!inputHandler.checkLineValidation(currLine,INIT_LINE_TYPE));
 }
 
@@ -58,7 +59,8 @@ int Menu::getNextTask(std::istream& input)
     {
         //getline(std::cin,currLine);
         std::getline(input,currLine);
-        currLine.erase(currLine.begin() + currLine.length()-1);
+        if (currLine[currLine.length()-1] == '\r')
+            currLine.erase(currLine.begin() + currLine.length()-1);
     } while (!inputHandler.checkLineValidation(currLine,inputHandler.getType(currLine)));
     return inputHandler.getType(currLine);
 }
