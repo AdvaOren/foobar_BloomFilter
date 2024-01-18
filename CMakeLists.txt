@@ -10,24 +10,32 @@ FetchContent_Declare(
         33e9dfd640b249b4be3799d395.zip
 )
 enable_testing()
-add_subdirectory(../foobar_DT/lib)
+add_subdirectory(lib)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 set(SOURCE_FILES
         # this is where the code we want to test
+        src/InputHandler.cpp
+        src/InputHandler.h
+        src/Menu.h
+        src/Menu.cpp
         src/BloomFilter.cpp
         src/BloomFilter.h
         )
 set(TEST_FILES
-        ../foobar_DT/tests/test_main.cpp # this is the main for tests
+        tests/test_main.cpp # this is the main for tests
         # this file contain the tests
-        tests/BF_test.cpp src/Ihash.h src/SingleHash.cpp src/SingleHash.h src/DoubleHash.cpp src/DoubleHash.h src/Icommand.h src/Addcommand.cpp src/AddCommand.h src/CheckCommand.cpp src/CheckCommand.h)
+
+        tests/inputHandler_test.cpp
+        tests/menu_test.cpp
+        tests/BF_test.cpp src/Ihash.h src/SingleHash.cpp src/SingleHash.h src/DoubleHash.cpp src/DoubleHash.h src/Icommand.h src/Addcommand.cpp src/AddCommand.h src/CheckCommand.cpp src/CheckCommand.h
+        )
 
 
-add_executable(CalcTests ${TEST_FILES})
+add_executable(BFTest ${TEST_FILES})
 # Link Google Test to the test executable
-target_link_libraries(CalcTests PRIVATE gtest gtest_main)
+target_link_libraries(BFTest PRIVATE gtest gtest_main)
 # Include the source directory for tests
-target_include_directories(CalcTests PRIVATE ../foobar_DT/src)
+target_include_directories(BFTest PRIVATE src)
 include(GoogleTest)
-add_test(NAME CalcTests COMMAND CalcTests)
+add_test(NAME BFTest COMMAND BFTest)

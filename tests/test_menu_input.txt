@@ -1,0 +1,23 @@
+input for GetInitParmTest:
+8 2 1
+8 1
+125 2
+a
+fd
+
+5 1 a
+9 1 2
+
+input for GetTaskTest:
+8 2 1
+1 www.example.com
+1 www.aaa,co.il
+1 www.foo.il
+2 www.todo.org
+2 www.example.com1
+2 aa
+asd
+2 ww.example.com www.example.com
+2 1
+2
+2 www.enough.com
