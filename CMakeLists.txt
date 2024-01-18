@@ -17,6 +17,8 @@ set(SOURCE_FILES
         # this is where the code we want to test
         src/InputHandler.cpp
         src/InputHandler.h
+        src/Menu.h
+        src/Menu.cpp
 
         )
 set(TEST_FILES
@@ -24,6 +26,7 @@ set(TEST_FILES
         # this file contain the tests
 
         tests/inputHandler_test.cpp
+        tests/menu_test.cpp
         )
 
 
