@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.14)
-project("foobar_TD")
+project("foobar_DT")
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 include(FetchContent)
@@ -14,7 +14,7 @@ add_subdirectory(lib)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 set(SOURCE_FILES
-         # this is where the code we want to test
+        # this is where the code we want to test
         src/InputHandler.cpp
         src/InputHandler.h
         src/Menu.h
@@ -22,16 +22,16 @@ set(SOURCE_FILES
         )
 set(TEST_FILES
         tests/test_main.cpp # this is the main for tests
-                            # this file contain the tests
+        # this file contain the tests
 
         tests/inputHandler_test.cpp
         tests/menu_test.cpp)
 
 
-add_executable(CalcTests ${TEST_FILES})
+add_executable(BFTest ${TEST_FILES})
 # Link Google Test to the test executable
-target_link_libraries(CalcTests PRIVATE gtest gtest_main)
+target_link_libraries(BFTest PRIVATE gtest gtest_main)
 # Include the source directory for tests
-target_include_directories(CalcTests PRIVATE src)
+target_include_directories(BFTest PRIVATE src)
 include(GoogleTest)
-add_test(NAME CalcTests COMMAND CalcTests)
+add_test(NAME BFTest COMMAND BFTest)
