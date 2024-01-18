@@ -6,11 +6,11 @@
 #define FOOBAR_DT_DOUBLEHASH_H
 
 #include <Ihash.h>
-class doubleHash: public Ihash{
+class DoubleHash: public Ihash{
 private:
     int size;
 public:
-    doubleHash(int size);
+    DoubleHash(int size);
     int hash(std::string URL) override;
 
 };

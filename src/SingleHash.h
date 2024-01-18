@@ -6,11 +6,11 @@
 #define FOOBAR_DT_SINGLEHASH_H
 #include "Ihash.h"
 
-class singleHash:public Ihash {
+class SingleHash: public Ihash {
 private:
     int size;
 public:
-    singleHash(int size);
+    SingleHash(int size);
     int hash(std::string URL);
 };
 

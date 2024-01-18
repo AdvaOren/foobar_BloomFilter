@@ -1,10 +1,10 @@
 #include <gtest/gtest.h>
 #include <vector>
 #include "BloomFilter.cpp"
-#include "singleHash.h"
-#include "doubleHash.h"
-#include "addCommand.h"
-
+#include "SingleHash.h"
+#include "DoubleHash.h"
+#include "AddCommand.h"
+#include "CheckCommand.h"
 using std::vector;
 using std::hash;
 TEST(BfTest, BasicTest) {
@@ -76,13 +76,13 @@ TEST(BlackListTest,BasicTest) {
 }
 
 TEST(SingleHashTest, BasicTest) {
-    singleHash sH = singleHash(6);
+    SingleHash sH = SingleHash(6);
     int index = sH.hash("");
     EXPECT_EQ(index,std::hash<string>()("") % 6);
 }
 
 TEST(DoubleHashTest,BasicTest) {
-    doubleHash dH = doubleHash(23);
+    DoubleHash dH = DoubleHash(23);
     EXPECT_EQ(dH.hash("www.double.com"),
               std::hash<string>()(std::to_string(std::hash<string>()("www.double.com"))) % 23);
 }
@@ -93,11 +93,28 @@ TEST(CommandAddTest, BasicTest) {
         array[i] = 0;
     }
     int index = std::hash<string>()("www.example.com") % 8;
-    addCommand add = addCommand();
-    Ihash* sH = new singleHash(8);
+    Addcommand add = Addcommand();
+    Ihash* sH = new SingleHash(8);
     vector<Ihash*> vec = vector<Ihash*>();
     vec.push_back(sH);
     vector<string> vec2 = vector<string>();
     add.execute("www.example.com", array,vec,&vec2);
     EXPECT_EQ(array[index],1);
+}
+
+TEST(CommandCheckTest, BasicTest) {
+    int* array = new int[8];
+    for (int i = 0; i < 8; ++i) {
+        array[i] = 0;
+    }
+    Addcommand add = Addcommand();
+    Ihash* sH = new SingleHash(8);
+    vector<Ihash*> vec = vector<Ihash*>();
+    vec.push_back(sH);
+    vector<string> vec2 = vector<string>();
+    add.execute("www.example.com", array,vec,&vec2);
+    CheckCommand checkCommand = CheckCommand();
+    checkCommand.execute("www.example.com", array,vec,&vec2);
+    EXPECT_TRUE(true);
+    checkCommand.execute("www.examle.com", array,vec,&vec2);
 }

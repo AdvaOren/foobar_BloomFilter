@@ -21,7 +21,7 @@ set(SOURCE_FILES
 set(TEST_FILES
         ../foobar_DT/tests/test_main.cpp # this is the main for tests
         # this file contain the tests
-        tests/BF_test.cpp src/Ihash.h src/singleHash.cpp src/singleHash.h src/doubleHash.cpp src/doubleHash.h src/Icommand.h src/addcommand.cpp src/addCommand.h)
+        tests/BF_test.cpp src/Ihash.h src/SingleHash.cpp src/SingleHash.h src/DoubleHash.cpp src/DoubleHash.h src/Icommand.h src/Addcommand.cpp src/AddCommand.h src/CheckCommand.cpp src/CheckCommand.h)
 
 
 add_executable(CalcTests ${TEST_FILES})

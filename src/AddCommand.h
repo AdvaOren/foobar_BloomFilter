@@ -6,7 +6,7 @@
 #define FOOBAR_DT_ADDCOMMAND_H
 #include "Icommand.h"
 using std::string;
-class addCommand: public Icommand {
+class Addcommand: public Icommand {
 public:
     void execute(string URL, int* array, vector<Ihash*> hashes,
                  vector<string>* blackList) override;
