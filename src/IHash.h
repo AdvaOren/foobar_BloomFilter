@@ -12,6 +12,7 @@ using std::vector;
 class IHash {
 public:
    virtual int hash(std::string URL) = 0;
+   virtual ~IHash() = default;
 };
 
 

@@ -22,7 +22,7 @@ void CheckCommand::execute(string URL, int *array, vector<IHash *> hashes,
     std::cout << "true";
     for (string s: *blackList) {
         if (!s.compare(URL)) {
-            std::cout << std::endl;
+            std::cout << " true" << std::endl;
             return;
         }
     }

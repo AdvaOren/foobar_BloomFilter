@@ -11,8 +11,9 @@
 using std::string;
 class ICommand {
 public:
-    virtual void execute(std::string, int* array, vector<IHash*> hashes,
+    virtual void execute(std::string, int* array, vector<IHash* > hashes,
                          vector<string>* blackList) = 0;
+    virtual ~ICommand() = default;
 };
 
 
