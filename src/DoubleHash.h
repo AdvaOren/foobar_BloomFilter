@@ -5,8 +5,8 @@
 #ifndef FOOBAR_DT_DOUBLEHASH_H
 #define FOOBAR_DT_DOUBLEHASH_H
 
-#include <Ihash.h>
-class DoubleHash: public Ihash{
+#include <IHash.h>
+class DoubleHash: public IHash{
 private:
     int size;
 public:

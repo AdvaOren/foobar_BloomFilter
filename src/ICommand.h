@@ -7,11 +7,11 @@
 
 
 #include <string>
-#include "Ihash.h"
+#include "IHash.h"
 using std::string;
-class Icommand {
+class ICommand {
 public:
-    virtual void execute(std::string, int* array, vector<Ihash*> hashes,
+    virtual void execute(std::string, int* array, vector<IHash*> hashes,
                          vector<string>* blackList) = 0;
 };
 

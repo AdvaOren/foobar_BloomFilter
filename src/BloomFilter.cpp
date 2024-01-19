@@ -2,13 +2,14 @@
 
 #include "BloomFilter.h"
 #include <string>
+#include <utility>
 using std::string;
 using std::hash;
 /*
  * bloomFilter: checkIfBlackListed
  * gets a URL and checks if it is in the blackList with hash funcs
  * */
-bool checkIfBlackListed(string URL, int* array, int size, vector<int> hashes) {
+bool BloomFilter::checkIfBlackListed(string URL, int* array, int size, vector<int> hashes) {
     hash<string> hash;
     for (int hashe : hashes) {
         //hashe == 1 means single hash
@@ -32,7 +33,7 @@ bool checkIfBlackListed(string URL, int* array, int size, vector<int> hashes) {
  * adds a URL to the blackList by marking the hashed indexes and
  * adding it to the map
  * */
-void addToBlackList(string URL, int* array, int size, vector<int> hashes,
+void BloomFilter::addToBlackList(string URL, int* array, int size, vector<int> hashes,
                     map<string,string>& blackList) {
     hash<string> hash;
     for (int hashe : hashes) {
@@ -52,9 +53,38 @@ void addToBlackList(string URL, int* array, int size, vector<int> hashes,
  * check the map for the URL if it is there return false
  * (it is not a false positive) o.w return true
  * */
-bool checkForFalsePositive(string URL, map<string,string>& blackList) {
+bool BloomFilter::checkForFalsePositive(string URL, map<string,string>& blackList) {
     if (blackList.find(URL) != blackList.end()) {
         return false;
     }
     return true;
+}
+
+BloomFilter::BloomFilter(int sizeBitsArray,map<int, ICommand*> commands,vector<IHash*> hashes)
+{
+    this->sizeBitsArray = sizeBitsArray;
+    this->bitsArray = new int[sizeBitsArray];
+    this->blackList = new vector<string>();
+    for (int i = 0; i < sizeBitsArray; ++i)
+    {
+        bitsArray[i] = 0;
+    }
+    this->commands = std::move(commands);
+    this->hashes = std::move(hashes);
+}
+
+BloomFilter::~BloomFilter()
+{
+    for (IHash* hash: this->hashes) {
+        delete hash;
+    }
+    for(auto & command : commands) {
+        delete command.second;
+    }
+    delete this->bitsArray;
+}
+
+void BloomFilter::bFilter(int task, string URL)
+{
+    commands[task]->execute(URL,bitsArray,hashes,blackList);
 }

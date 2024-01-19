@@ -4,9 +4,9 @@
 
 #ifndef FOOBAR_DT_SINGLEHASH_H
 #define FOOBAR_DT_SINGLEHASH_H
-#include "Ihash.h"
+#include "IHash.h"
 
-class SingleHash: public Ihash {
+class SingleHash: public IHash {
 private:
     int size;
 public:

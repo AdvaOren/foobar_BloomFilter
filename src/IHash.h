@@ -6,8 +6,10 @@
 #define FOOBAR_DT_IHASH_H
 #include <vector>
 #include <string>
+
 using std::vector;
-class Ihash {
+
+class IHash {
 public:
    virtual int hash(std::string URL) = 0;
 };

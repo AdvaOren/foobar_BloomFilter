@@ -1,9 +1,10 @@
 #include "App.h"
 
-void App::run(IMenu* menu)
+void App::run(IMenu* menu,std::istream& input)
 {
-    ///BF bf(menu->getInitParm());
+    BloomFilter bf(factory.createBloomFilter(menu->getInitParm()));
     while (true) {
-        ///bf.execute(menu->getNextTask(),menu->getURL());
+        bf.bFilter(menu->getNextTask(input),menu->getURL());
     }
+    delete menu;
 }

@@ -12,7 +12,7 @@
 using std::string;
 using std::vector;
 
-class Menu : IMenu
+class Menu : public IMenu
 {
 private:
     string currLine;
