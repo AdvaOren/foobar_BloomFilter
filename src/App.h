@@ -7,12 +7,13 @@
 
 using std::string;
 
+//This class run the program.
 class App
 {
 private:
     Factory factory;
 public:
-    void run(IMenu* menu, std::istream& input);
+    void run(IMenu* menu);
 };
 
 

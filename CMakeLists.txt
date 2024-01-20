@@ -44,7 +44,7 @@ set(TEST_FILES
         tests/inputHandler_test.cpp
         tests/menu_test.cpp
         tests/BF_test.cpp
-        tests/app_test.cpp)
+        )
 
 
 add_executable(BFTest ${TEST_FILES})

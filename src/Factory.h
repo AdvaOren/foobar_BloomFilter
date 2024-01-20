@@ -12,15 +12,18 @@
 #include "DoubleHash.h"
 #include "BloomFilter.h"
 
+#define CONSOLE_MENU 0
+
 using std::vector;
 using std::string;
 
+//This a factory class that help to create objects.
 class Factory
 {
 public:
     BloomFilter createBloomFilter(vector<int> initialParams);
     IHash* createHashFunction(int type, int size);
-    IMenu* createMenu(int type, std::istream& input);
+    IMenu* createMenu(int type);
 };
 
 

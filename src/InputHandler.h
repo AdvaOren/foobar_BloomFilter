@@ -12,6 +12,7 @@
 using std::string;
 using std::vector;
 
+//This class check validation of the input and manipulate it.
 class InputHandler
 {
 public:

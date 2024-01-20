@@ -1,7 +1,3 @@
-//
-// Created by danie on 17/01/2024.
-//
-
 #include "SingleHash.h"
 
 /**
@@ -13,6 +9,10 @@ int SingleHash::hash(std::string URL){
     return h(URL) % this->size;
 }
 
+/**
+ * This function is the constructor of the class
+ * @param size the size of the bits array
+ */
 SingleHash::SingleHash(int size) {
     this->size = size;
 }

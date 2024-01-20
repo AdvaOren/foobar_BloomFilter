@@ -1,11 +1,8 @@
-//
-// Created by danie on 17/01/2024.
-//
-
 #ifndef FOOBAR_DT_SINGLEHASH_H
 #define FOOBAR_DT_SINGLEHASH_H
 #include "IHash.h"
 
+//This class perform one time hash on the input
 class SingleHash: public IHash {
 private:
     int size;

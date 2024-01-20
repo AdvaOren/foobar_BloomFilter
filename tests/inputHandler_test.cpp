@@ -5,6 +5,7 @@
 using std::vector;
 using std::string;
 
+//This test check the function checkURL() in the InputHandler class
 TEST(CheckURLTest, BasicTest) {
     InputHandler tester;
     EXPECT_TRUE(tester.checkURL("www.example.com"));
@@ -22,6 +23,7 @@ TEST(CheckURLTest, BasicTest) {
     EXPECT_FALSE(tester.checkURL("www.example.com."));
 }
 
+//This test check the function parseLine() in the InputHandler class
 TEST(ParseLine, BasicTest) {
     InputHandler tester;
     vector<string> r1{"8","1","2"};
@@ -46,6 +48,7 @@ TEST(ParseLine, BasicTest) {
     EXPECT_EQ(tester.parseLine(""),r7);
 }
 
+//This test check the function getType() in the InputHandler class
 TEST(GetType, BasicTest) {
     InputHandler tester;
     EXPECT_EQ(tester.getType("1 www.example.com"),1);
@@ -68,6 +71,7 @@ TEST(GetType, BasicTest) {
     EXPECT_NE(tester.getType("a 2"),2);
 }
 
+//This test check the function checkInitialLineInput() in the InputHandler class
 TEST(ValidInitialLine, BasicTest) {
     InputHandler tester;
     vector<string> line0 {"8" ,"2"};
@@ -116,6 +120,7 @@ TEST(ValidInitialLine, BasicTest) {
     EXPECT_FALSE(tester.checkInitialLineInput(line14));
 }
 
+//This test check the function checkLineValidation() in the InputHandler class
 TEST(ValidLine, AdvancedTest) {
     InputHandler tester;
     EXPECT_TRUE(tester.checkLineValidation("8 2 1",0));
@@ -151,6 +156,7 @@ TEST(ValidLine, AdvancedTest) {
     EXPECT_FALSE(tester.checkLineValidation("",2));
 }
 
+//This test check the function getURL() in the InputHandler class
 TEST(GetURL, BasicTest) {
     InputHandler tester;
     EXPECT_EQ(tester.getURL("2 www.example.com"), "www.example.com");

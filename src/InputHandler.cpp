@@ -1,6 +1,6 @@
 #include "InputHandler.h"
 
-/* The function check if a given URL is legal
+/** The function check if a given URL is legal
 * Input: the url
 * Output: legal or not*/
 bool InputHandler::checkURL(string url)
@@ -36,7 +36,7 @@ bool InputHandler::checkURL(string url)
     return dotAppearTwice;
 }
 
-/* The function take a complete line and parse it by ' '
+/** The function take a complete line and parse it by ' '
  * Input: the whole line
  * Output: the parts of the line*/
 vector <string> InputHandler::parseLine(string line)
@@ -59,7 +59,7 @@ vector <string> InputHandler::parseLine(string line)
     return arguments;
 }
 
-/* The function return the type of the line
+/** The function return the type of the line
  * Input: the whole line
  * Output: the type. ERROR=-1 will return if type not found */
 int InputHandler::getType(string line)
@@ -75,7 +75,7 @@ int InputHandler::getType(string line)
     return atoi(type.c_str());
 }
 
-/* The function check if the argument match the initial line
+/** The function check if the argument match the initial line
  * Input: line arguments
  * Output: match or not */
 bool InputHandler::checkInitialLineInput(vector<string> line)
@@ -109,7 +109,7 @@ bool InputHandler::checkInitialLineInput(vector<string> line)
     return true;
 }
 
-/* The function check if a line is match the line type
+/** The function check if a line is match the line type
  * Input: the whole line to check and the type of the line
  * Output: Does the line match the type format */
 bool InputHandler::checkLineValidation(string line, int lineType)
@@ -143,10 +143,16 @@ bool InputHandler::checkLineValidation(string line, int lineType)
     return false;
 }
 
+/**
+ * this function return the url from a line
+ * Input: the whole line
+ * Output: the url
+ */
 string InputHandler::getURL(string line)
 {
     vector<string> arguments = parseLine(line);
     string url = arguments[1];
+    //handle the case that the url contain space in it.
     if (arguments.size() > 2) {
         for (int i = 2; i < arguments.size(); ++i)
         {

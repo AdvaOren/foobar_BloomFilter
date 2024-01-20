@@ -1,17 +1,16 @@
 #include "Menu.h"
 
 /**
- * This is the constructor for the class. cthe c'tor read the first line from user.
+ * This is the constructor for the class. the c'tor read the first line from user.
  *  input: none
  *  Output: none
  */
- //for now, for the tests the input is from file
+ //function for the tests. The input is from file
 Menu::Menu(std::istream& input)
 {
     //read the input until the initial line is legal
     do
     {
-        //getline(std::cin,currLine);
         std::getline(input,currLine);
         if (currLine[currLine.length()-1] == '\r')
             currLine.erase(currLine.begin() + currLine.length()-1);
@@ -51,16 +50,44 @@ std::vector<int> Menu::getInitParm()
  *  input: none
  *  Output: the task
  */
-//for now, for the tests the input is from file
+//function for the tests. The input is from file
 int Menu::getNextTask(std::istream& input)
 {
     //read the input until the initial line is legal
     do
     {
-        //getline(std::cin,currLine);
         std::getline(input,currLine);
         if (currLine[currLine.length()-1] == '\r')
             currLine.erase(currLine.begin() + currLine.length()-1);
+    } while (!inputHandler.checkLineValidation(currLine,inputHandler.getType(currLine)));
+    return inputHandler.getType(currLine);
+}
+
+/**
+ * This is the constructor for the class. the c'tor read the first line from user.
+ *  input: none
+ *  Output: none
+ */
+Menu::Menu()
+{
+    //read the input until the initial line is legal
+    do
+    {
+        getline(std::cin,currLine);
+    } while (!inputHandler.checkLineValidation(currLine,INIT_LINE_TYPE));
+}
+
+/**
+ * This function return the next type of task
+ *  input: none
+ *  Output: the task
+ */
+int Menu::getNextTask()
+{
+    //read the input until the initial line is legal
+    do
+    {
+        getline(std::cin,currLine);
     } while (!inputHandler.checkLineValidation(currLine,inputHandler.getType(currLine)));
     return inputHandler.getType(currLine);
 }

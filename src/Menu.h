@@ -12,6 +12,7 @@
 using std::string;
 using std::vector;
 
+//This class represent a menu. get input from user and transfer it to the app.
 class Menu : public IMenu
 {
 private:
@@ -19,9 +20,11 @@ private:
     InputHandler inputHandler;
 public:
     Menu(std::istream& input);
+    Menu();
     std::string getURL() override;
     std::vector<int> getInitParm() override;
     int getNextTask(std::istream& input) override;
+    int getNextTask() override;
 };
 
 

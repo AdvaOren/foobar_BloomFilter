@@ -1,9 +1,6 @@
-//
-// Created by danie on 18/01/2024.
-//
-
 #include "CheckCommand.h"
 #include <iostream>
+
 /***
  * name: execute:
  * input: URL, array of blacklisted indexes a vector of hash funcs and a vector
@@ -13,6 +10,7 @@
  * */
 void CheckCommand::execute(string URL, int *array, vector<IHash *> hashes,
                            vector<string>* blackList) {
+    //check with the hash function if the url is blocked.
     for (IHash* h: hashes) {
         if (array[h->hash(URL)] == 0) {
             std::cout << "false" << std::endl;
@@ -20,6 +18,7 @@ void CheckCommand::execute(string URL, int *array, vector<IHash *> hashes,
         }
     }
     std::cout << "true";
+    //check in the blackList if the url is blocked.
     for (string s: *blackList) {
         if (!s.compare(URL)) {
             std::cout << " true" << std::endl;

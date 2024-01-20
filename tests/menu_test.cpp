@@ -6,6 +6,7 @@
 using std::vector;
 using std::string;
 
+//This test check the function getInitParm() in the Menu class
 TEST(GetInitParmTest, BasicTest) {
     std::ifstream ifs;
     ifs.open("../tests/test_menu_input.txt");
@@ -31,6 +32,7 @@ TEST(GetInitParmTest, BasicTest) {
     ifs.close();
 }
 
+//This test check the function getNextTask() in the Menu class
 TEST(GetTaskTest, BasicTest) {
     std::ifstream ifs;
     ifs.open("../tests/test_menu_input.txt");
@@ -52,6 +54,7 @@ TEST(GetTaskTest, BasicTest) {
     ifs.close();
 }
 
+//This test check the function getURL() in the Menu class
 TEST(GetURLTest, AdvanceTest) {
     std::ifstream ifs;
     ifs.open("../tests/test_menu_input_url.txt");

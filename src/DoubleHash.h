@@ -1,11 +1,9 @@
-//
-// Created by danie on 17/01/2024.
-//
-
 #ifndef FOOBAR_DT_DOUBLEHASH_H
 #define FOOBAR_DT_DOUBLEHASH_H
 
 #include <IHash.h>
+
+//This class perform hash function twice on the input.
 class DoubleHash: public IHash{
 private:
     int size;
