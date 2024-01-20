@@ -2,12 +2,13 @@
 #include <vector>
 #include "BloomFilter.cpp"
 #include "SingleHash.cpp"
-#include "DoubleHash.h"
+#include "DoubleHash.cpp"
 #include "AddCommand.cpp"
 #include "CheckCommand.cpp"
 
 using std::vector;
 using std::hash;
+using std::map;
 /*
 TEST(BfTest, BasicTest) {
     vector<IHash*> hashes;
@@ -79,7 +80,7 @@ TEST(BlackListTest,BasicTest) {
     bf.addToBlackList("URL",array,8,hashes,blackList);
     EXPECT_FALSE(bf.checkForFalsePositive("URL", blackList));
 }
-
+*/
 TEST(SingleHashTest, BasicTest) {
     SingleHash sH = SingleHash(6);
     int index = sH.hash("");
@@ -106,7 +107,7 @@ TEST(CommandAddTest, BasicTest) {
     add.execute("www.example.com", array,vec,&vec2);
     EXPECT_EQ(array[index],1);
 }
-*/
+
 TEST(CommandCheckTest, BasicTest) {
     int* array = new int[8];
     for (int i = 0; i < 8; ++i) {
@@ -122,4 +123,5 @@ TEST(CommandCheckTest, BasicTest) {
     checkCommand.execute("www.example.com", array,vec,&vec2);
     //EXPECT_TRUE(true);
     checkCommand.execute("www.examle.com", array,vec,&vec2);
+    delete[] array;
 }
