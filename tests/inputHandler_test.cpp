@@ -5,23 +5,6 @@
 using std::vector;
 using std::string;
 
-//This test check the function checkURL() in the InputHandler class
-TEST(CheckURLTest, BasicTest) {
-    InputHandler tester;
-    EXPECT_TRUE(tester.checkURL("www.example.com"));
-    EXPECT_TRUE(tester.checkURL("www.example.com0"));
-    EXPECT_TRUE(tester.checkURL("www.example sds.com"));
-    EXPECT_TRUE(tester.checkURL("www.e.m"));
-
-    EXPECT_FALSE(tester.checkURL(""));
-    EXPECT_FALSE(tester.checkURL("ww.example.com"));
-    EXPECT_FALSE(tester.checkURL("www.com"));
-    EXPECT_FALSE(tester.checkURL(".example.com"));
-    EXPECT_FALSE(tester.checkURL("www.example"));
-    EXPECT_FALSE(tester.checkURL("www.examplecom"));
-    EXPECT_FALSE(tester.checkURL(".www.example.com"));
-    EXPECT_FALSE(tester.checkURL("www.example.com."));
-}
 
 //This test check the function parseLine() in the InputHandler class
 TEST(ParseLine, BasicTest) {
@@ -114,10 +97,19 @@ TEST(ValidInitialLine, BasicTest) {
     EXPECT_FALSE(tester.checkInitialLineInput(line12));
 
     vector<string> line13 {"8" ,"1", "1"};
-    EXPECT_FALSE(tester.checkInitialLineInput(line13));
+    EXPECT_TRUE(tester.checkInitialLineInput(line13));
 
     vector<string> line14 {"8" ,"2", "2"};
-    EXPECT_FALSE(tester.checkInitialLineInput(line14));
+    EXPECT_TRUE(tester.checkInitialLineInput(line14));
+
+    vector<string> line15 {"8" ,"2", "2", "1", "2", "1"};
+    EXPECT_TRUE(tester.checkInitialLineInput(line15));
+
+    vector<string> line16 {"0" ,"2"};
+    EXPECT_FALSE(tester.checkInitialLineInput(line16));
+
+    vector<string> line17 {"-8" ,"2",};
+    EXPECT_FALSE(tester.checkInitialLineInput(line17));
 }
 
 //This test check the function checkLineValidation() in the InputHandler class
@@ -138,8 +130,6 @@ TEST(ValidLine, AdvancedTest) {
     EXPECT_TRUE(tester.checkLineValidation("1 www.example.c.om",1));
     EXPECT_TRUE(tester.checkLineValidation("1 www.q.q",1));
     EXPECT_FALSE(tester.checkLineValidation("2 www.example.com",1));
-    EXPECT_FALSE(tester.checkLineValidation("1 wwdw.example.com",1));
-    EXPECT_FALSE(tester.checkLineValidation("1 wwdw.example.com",1));
     EXPECT_FALSE(tester.checkLineValidation("www.example.com",1));
     EXPECT_FALSE(tester.checkLineValidation("1",1));
     EXPECT_FALSE(tester.checkLineValidation("",1));
@@ -149,8 +139,6 @@ TEST(ValidLine, AdvancedTest) {
     EXPECT_TRUE(tester.checkLineValidation("2 www.exam ple.c.om",2));
     EXPECT_TRUE(tester.checkLineValidation("2 www.q.q",2));
     EXPECT_FALSE(tester.checkLineValidation("1 www.example.com",2));
-    EXPECT_FALSE(tester.checkLineValidation("2 wwdw.example.com",2));
-    EXPECT_FALSE(tester.checkLineValidation("2 wwdw.example.com",2));
     EXPECT_FALSE(tester.checkLineValidation("www.example.com",2));
     EXPECT_FALSE(tester.checkLineValidation("2",2));
     EXPECT_FALSE(tester.checkLineValidation("",2));

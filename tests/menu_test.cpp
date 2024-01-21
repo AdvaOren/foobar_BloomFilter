@@ -29,6 +29,21 @@ TEST(GetInitParmTest, BasicTest) {
     vector<int> test4 {9,1,2};
     EXPECT_EQ(menu4.getInitParm(),test4);
 
+    Menu menu5(ifs);
+    vector<int> test5 {8,1};
+    EXPECT_EQ(menu5.getInitParm(),test5);
+
+    Menu menu6(ifs);
+    vector<int> test6 {8,2};
+    EXPECT_EQ(menu6.getInitParm(),test6);
+
+    Menu menu7(ifs);
+    vector<int> test7 {8,1,2};
+    EXPECT_EQ(menu7.getInitParm(),test7);
+
+    Menu menu8(ifs);
+    vector<int> test8 {8,1,2};
+    EXPECT_EQ(menu7.getInitParm(),test8);
     ifs.close();
 }
 
@@ -44,12 +59,6 @@ TEST(GetTaskTest, BasicTest) {
     EXPECT_EQ(menu.getNextTask(ifs),1);
     EXPECT_EQ(menu.getNextTask(ifs),2);
     EXPECT_EQ(menu.getNextTask(ifs),2);
-    //this test contain illegal lines:
-    //2 aa
-    //asd
-    //2 ww.example.com www.example.com
-    //2 1
-    //2
     EXPECT_EQ(menu.getNextTask(ifs),2);
     ifs.close();
 }
@@ -71,6 +80,16 @@ TEST(GetURLTest, AdvanceTest) {
     EXPECT_EQ(menu.getURL(),"www.todo.org");
     menu.getNextTask(ifs);
     EXPECT_EQ(menu.getURL(),"www.exaa mple.com1");
+    menu.getNextTask(ifs);
+    EXPECT_EQ(menu.getURL(),"aa");
+    menu.getNextTask(ifs);
+    EXPECT_EQ(menu.getURL(),"www.ad.");
+    menu.getNextTask(ifs);
+    EXPECT_EQ(menu.getURL(),"ww.example.com www.example.com");
+    menu.getNextTask(ifs);
+    EXPECT_EQ(menu.getURL(),"www.cl");
+    menu.getNextTask(ifs);
+    EXPECT_EQ(menu.getURL(),"ww.no.com");
     menu.getNextTask(ifs);
     EXPECT_EQ(menu.getURL(),"www.enough.com");
 }

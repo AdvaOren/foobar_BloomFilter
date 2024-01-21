@@ -40,7 +40,17 @@ std::vector<int> Menu::getInitParm()
     //convert the params from string to int
     for (int i = 0; i < paramsString.size(); ++i)
     {
-        params.push_back((int)strtol(paramsString[i].c_str(),&temp,DECIMAL));
+        int type = (int)strtol(paramsString[i].c_str(),&temp,DECIMAL);
+        bool typeExists = false;
+        for (int j = 1; j < params.size(); ++j)
+        {
+            if (params[j] == type) {
+                typeExists = true;
+                break;
+            }
+        }
+        if (!typeExists)
+            params.push_back(type);
     }
     return params;
 }

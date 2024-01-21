@@ -16,7 +16,6 @@ using std::vector;
 class InputHandler
 {
 public:
-    bool checkURL(string url);
     vector<string> parseLine(string line);
     int getType(string line);
     bool checkInitialLineInput(vector<string> line);
