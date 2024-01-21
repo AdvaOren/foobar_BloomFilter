@@ -1,3 +1,5 @@
-FROM GCC: LATEST
-COPY ./main.cpp ./main.cpp
-CMD ["run","main.cpp"]
+FROM gcc:latest
+WORKDIR usr/src
+COPY ./src/ .
+RUN g++ main.cpp
+CMD ["./a.out"]
