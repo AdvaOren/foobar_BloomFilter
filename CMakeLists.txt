@@ -17,10 +17,25 @@ set(SOURCE_FILES
         # this is where the code we want to test
         src/InputHandler.cpp
         src/InputHandler.h
+        src/IMenu.h
         src/Menu.h
         src/Menu.cpp
         src/BloomFilter.cpp
         src/BloomFilter.h
+        src/Factory.cpp
+        src/Factory.h
+        src/IHash.h
+        src/SingleHash.cpp
+        src/SingleHash.h
+        src/DoubleHash.cpp
+        src/DoubleHash.h
+        src/ICommand.h
+        src/AddCommand.cpp
+        src/AddCommand.h
+        src/CheckCommand.cpp
+        src/CheckCommand.h
+        src/App.cpp
+        src/App.h
         )
 set(TEST_FILES
         tests/test_main.cpp # this is the main for tests
@@ -28,7 +43,7 @@ set(TEST_FILES
 
         tests/inputHandler_test.cpp
         tests/menu_test.cpp
-        tests/BF_test.cpp src/Ihash.h src/SingleHash.cpp src/SingleHash.h src/DoubleHash.cpp src/DoubleHash.h src/Icommand.h src/Addcommand.cpp src/AddCommand.h src/CheckCommand.cpp src/CheckCommand.h
+        tests/BF_test.cpp
         )
 
 

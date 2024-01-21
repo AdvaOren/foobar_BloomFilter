@@ -1,17 +1,14 @@
-//
-// Created by danie on 17/01/2024.
-//
-
 #ifndef FOOBAR_DT_SINGLEHASH_H
 #define FOOBAR_DT_SINGLEHASH_H
-#include "Ihash.h"
+#include "IHash.h"
 
-class SingleHash: public Ihash {
+//This class perform one time hash on the input
+class SingleHash: public IHash {
 private:
     int size;
 public:
     SingleHash(int size);
-    int hash(std::string URL);
+    int hash(std::string URL) override;
 };
 
 

@@ -1,14 +1,17 @@
-//
-// Created by danie on 17/01/2024.
-//
-
 #include "DoubleHash.h"
 
+/**
+ * This function is the constructor of the class
+ * Input: the size of the bits array.
+ */
 DoubleHash::DoubleHash(int size) {
     this->size = size;
 }
+
 /**
- * returns the result of doublehashing the URL
+ * This function returns the result of hashing the URL
+ * Input: the url
+ * Output: the result
  * */
 int DoubleHash::hash(std::string URL) {
     std::hash<std::string> h;

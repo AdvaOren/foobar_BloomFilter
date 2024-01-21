@@ -12,10 +12,10 @@
 using std::string;
 using std::vector;
 
+//This class check validation of the input and manipulate it.
 class InputHandler
 {
 public:
-    bool checkURL(string url);
     vector<string> parseLine(string line);
     int getType(string line);
     bool checkInitialLineInput(vector<string> line);

@@ -1,42 +1,8 @@
 #include "InputHandler.h"
 
-/* The function check if a given URL is legal
-* Input: the url
-* Output: legal or not*/
-bool InputHandler::checkURL(string url)
-{
-    // check that the url has the minimum chars. for example www.a.a
-    if (url.length() < 7)
-    {
-        return false;
-    }
-    //check the 'www' in the beginning
-    if (url[0] != 'w' || url[1] != 'w' || url[2] != 'w')
-    {
-        return false;
-    }
-    //check that there is a dot after the 'www' and then the domain start
-    if (url[3] != '.' || url[4] == '.')
-    {
-        return false;
-    }
-    //We already check that the firs dot appear after the 'www'
-    bool dotAppearTwice = false;
-    for (int i = 5; i < url.length()-1; ++i)
-    {
-        if (url[i] == '.') {
-            dotAppearTwice = true;
-        }
-    }
-    //check that the url not ending with '.'
-    if (url[url.length()-1] == '.')
-    {
-        return false;
-    }
-    return dotAppearTwice;
-}
 
-/* The function take a complete line and parse it by ' '
+
+/** The function take a complete line and parse it by ' '
  * Input: the whole line
  * Output: the parts of the line*/
 vector <string> InputHandler::parseLine(string line)
@@ -59,7 +25,7 @@ vector <string> InputHandler::parseLine(string line)
     return arguments;
 }
 
-/* The function return the type of the line
+/** The function return the type of the line
  * Input: the whole line
  * Output: the type. ERROR=-1 will return if type not found */
 int InputHandler::getType(string line)
@@ -75,12 +41,12 @@ int InputHandler::getType(string line)
     return atoi(type.c_str());
 }
 
-/* The function check if the argument match the initial line
+/** The function check if the argument match the initial line
  * Input: line arguments
  * Output: match or not */
 bool InputHandler::checkInitialLineInput(vector<string> line)
 {
-    if (line.size() < NUM_OF_HASH_FUNCS || line.size() > MAX_INIT_LINE_SIZE)
+    if (line.size() < NUM_OF_HASH_FUNCS)
     {
         return false;
     }
@@ -89,27 +55,23 @@ bool InputHandler::checkInitialLineInput(vector<string> line)
     {
         return false;
     }
-    //check if the hash arguments are 1 or 2
-    if (!(line[1].compare("1") == 0 || line[1].compare("2") == 0))
+    //check if the size of the bit array is a positive number.
+    char * temp;
+    int arraySize = (int)strtol(line[0].c_str(),&temp,10);
+    if (arraySize <=0 )
     {
         return false;
     }
-    if (line.size() == MAX_INIT_LINE_SIZE)
+    //check if the hash arguments are 1 or 2
+    for (int i = 1; i < line.size(); ++i)
     {
-        if (!(line[2].compare("1") == 0 || line[2].compare("2") == 0))
-        {
+        if (line[i] != "1" && line[i] != "2")
             return false;
-        }
-        //check if the hash arguments are not the same
-        if (line[1].compare(line[2]) == 0)
-        {
-            return false;
-        }
     }
     return true;
 }
 
-/* The function check if a line is match the line type
+/** The function check if a line is match the line type
  * Input: the whole line to check and the type of the line
  * Output: Does the line match the type format */
 bool InputHandler::checkLineValidation(string line, int lineType)
@@ -122,31 +84,24 @@ bool InputHandler::checkLineValidation(string line, int lineType)
             return checkInitialLineInput(arguments);
         //this is the case of option 1 - adding to black list
         case 1:
-            if (arguments.size() != 2)
-            {
-                return false;
-            }
-            return getType(arguments[0]) == 1 && checkURL(arguments[1]);
+            return arguments.size() >= 2 && getType(arguments[0]) == 1;
         //this is the case of option 2 - check  if site is in the blacklist
         case 2:
-            if (arguments.size() < 2)
-            {
-                return false;
-            }
-            string url;
-            for (int i = 1; i < arguments.size(); ++i)
-            {
-                url += arguments[i];
-            }
-            return getType(arguments[0]) == 2 && checkURL(url);
+            return arguments.size() >= 2 && getType(arguments[0]) == 2;
     }
     return false;
 }
 
+/**
+ * this function return the url from a line
+ * Input: the whole line
+ * Output: the url
+ */
 string InputHandler::getURL(string line)
 {
     vector<string> arguments = parseLine(line);
     string url = arguments[1];
+    //handle the case that the url contain space in it.
     if (arguments.size() > 2) {
         for (int i = 2; i < arguments.size(); ++i)
         {
