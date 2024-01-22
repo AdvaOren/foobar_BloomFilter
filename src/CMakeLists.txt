@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.18)
-project(project_main)
+project(foobar_DT)
 
 set(CMAKE_CXX_STANDARD 14)
 
