@@ -1,5 +1,8 @@
 FROM gcc:latest
 WORKDIR usr/src
 COPY ./src/ .
-RUN g++ main.cpp app.cpp factory.cpp
-CMD ["./a.out"]
+RUN cmake -S .-B bulid/
+RUN cmake --bulid bulid
+WORKDIR bulid
+WORKDIR debug
+CMD ["project_main.exe" ]
