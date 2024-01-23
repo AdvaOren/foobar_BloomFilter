@@ -2,32 +2,33 @@ name: Publish Docker image
 
 on:
   release:
-  types: [published]
+    types: [published]
+  
 jobs:
   push_to_registry:
     name: push Docker image to docker hub
     runs on: ubuntu latest
     steps:
-      -name: check out the repo
-      -uses: action/checkout@v4
+      - name: check out the repo
+      - uses: action/checkout@v4
 
-      -name: log in to Docker hub
-      -uses: Docker/login-action@v3
-      with:
+      - name: log in to Docker hub
+       uses: Docker/login-action@v3
+       with:
         username: ${{SECRETS.USERNAME}}
         password: ${{SECRETS.PASSWORD}}
       
-      -name: extract metadata (tags, labels) for Docker
+      - name: extract metadata (tags, labels) for Docker
       id: meta
       uses: Docker/metadata-action@v5
       with: 
         images: name/app
 
-      -name: bulid and push Docker image
-      uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
-      with:
-        context: 
-        file: ./Dockerfile
-        push: true
-        tags: ${{steps.mete.outputs.tags}}
+      - name: bulid and push Docker image
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+        with:
+         context: 
+         file: ./Dockerfile
+         push: true
+         tags: ${{steps.mete.outputs.tags}}
         labels: ${{steps.meta.outputs.labels}}
