@@ -7,7 +7,7 @@ on:
 jobs:
   push_to_registry:
     name: push Docker image to docker hub
-    runs on: ubuntu latest
+    runs-on: ubuntu latest
     steps:
       - name: check out the repo
         uses: action/checkout@v4
@@ -31,4 +31,4 @@ jobs:
          file: ./Dockerfile
          push: true
          tags: ${{steps.mete.outputs.tags}}
-        labels: ${{steps.meta.outputs.labels}}
+         labels: ${{steps.meta.outputs.labels}}
