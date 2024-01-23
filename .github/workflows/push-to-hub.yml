@@ -10,17 +10,17 @@ jobs:
     runs-on: ubuntu latest
     steps:
       - name: check out the repo
-        uses: action/checkout@v4
+        uses: actions/checkout@v4
 
       - name: log in to Docker hub
-        uses: Docker/login-action@v3
+        uses: docker/login-action@v3
         with:
          username: ${{SECRETS.USERNAME}}
          password: ${{SECRETS.PASSWORD}}
       
       - name: extract metadata (tags, labels) for Docker
         id: meta
-        uses: Docker/metadata-action@v5
+        uses: docker/metadata-action@v5
         with: 
          images: danielkfir/foobar_dt
 
