@@ -4,6 +4,7 @@ project(foobar_DT)
 set(CMAKE_CXX_STANDARD 14)
 
 include_directories(.)
+find_package(Threads REQUIRED)
 
 add_executable(project_main
         AddCommand.cpp
@@ -27,4 +28,10 @@ add_executable(project_main
         Menu.cpp
         Menu.h
         SingleHash.cpp
-        SingleHash.h)
+        SingleHash.h
+        Server.cpp
+        Server.h
+        ServerClientHandler.cpp
+        ServerClientHandler.h)
+
+target_link_libraries(project_main PRIVATE Threads::Threads)

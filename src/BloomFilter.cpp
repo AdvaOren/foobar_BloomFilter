@@ -42,7 +42,7 @@ BloomFilter::~BloomFilter()
  * This function is the filtering function
  * Input: the command task and th url.
  * */
-void BloomFilter::bFilter(int task, string URL)
+string BloomFilter::bFilter(int task, string URL)
 {
-    commands[task]->execute(URL,bitsArray,hashes,blackList);
+    return commands[task]->execute(URL,bitsArray,hashes,blackList);
 }

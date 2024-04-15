@@ -110,3 +110,26 @@ string InputHandler::getURL(string line)
     }
     return url;
 }
+
+std::vector<int> InputHandler::getInitParm(string line)
+{
+    vector<string> paramsString = parseLine(line);
+    vector<int> params;
+    char * temp;
+    //convert the params from string to int
+    for (int i = 0; i < paramsString.size(); ++i)
+    {
+        int type = (int)strtol(paramsString[i].c_str(),&temp,DECIMAL);
+        bool typeExists = false;
+        for (int j = 1; j < params.size(); ++j)
+        {
+            if (params[j] == type) {
+                typeExists = true;
+                break;
+            }
+        }
+        if (!typeExists)
+            params.push_back(type);
+    }
+    return params;
+}

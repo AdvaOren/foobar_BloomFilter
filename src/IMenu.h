@@ -11,8 +11,9 @@ class IMenu
 public:
     virtual std::string getURL() = 0;
     virtual std::vector<int> getInitParm() = 0;
-    virtual int getNextTask(std::istream& input) = 0;
+    virtual int getNextTask(std::istream& input) {return 0;};
     virtual int getNextTask() = 0;
+    virtual void sendResult(std::string result) = 0;
     virtual ~IMenu() = default;
 };
 

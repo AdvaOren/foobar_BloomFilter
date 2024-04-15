@@ -23,7 +23,7 @@ private:
 
 public:
     BloomFilter(int sizeBitsArray,map<int, ICommand*> commands,vector<IHash*> hashes);
-    void bFilter(int task, string URL);
+    string bFilter(int task, string URL);
     ~BloomFilter();
 };
 #endif //FOOBAR_DT_BLOOMFILTER_H

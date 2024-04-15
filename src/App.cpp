@@ -7,10 +7,24 @@
  * */
 void App::run(IMenu* menu)
 {
-    BloomFilter bf(factory.createBloomFilter(menu->getInitParm()));
+    Factory& factory = Factory::getInstance();
+    if (!factory.isBfInit())
+    {
+        pthread_mutex_t lock;
+        pthread_mutex_lock(&lock);
+        if (!factory.isBfInit()) {
+            factory.createBloomFilter(menu->getInitParm());
+            factory.setBfInit();
+        }
+        pthread_mutex_unlock(&lock);
+    }
+    BloomFilter *bf = factory.getBloomFilter();
+    string result;
     while (true) {
         int task = menu->getNextTask();
-        bf.bFilter(task,menu->getURL());
+        if (task == ERROR)
+            break;
+        result = bf->bFilter(task,menu->getURL());
+        menu->sendResult(result);
     }
-    delete menu;
 }

@@ -7,7 +7,6 @@
 #include <fstream>
 #include <string>
 
-#define DECIMAL 10
 
 using std::string;
 using std::vector;
@@ -25,6 +24,7 @@ public:
     std::vector<int> getInitParm() override;
     int getNextTask(std::istream& input) override;
     int getNextTask() override;
+    void sendResult(std::string result) override;
 };
 
 

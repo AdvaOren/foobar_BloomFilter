@@ -10,10 +10,8 @@ using std::string;
 //This class run the program.
 class App
 {
-private:
-    Factory factory;
 public:
-    void run(IMenu* menu);
+    static void run(IMenu* menu);
 };
 
 

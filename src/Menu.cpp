@@ -34,25 +34,7 @@ std::string Menu::getURL()
  */
 std::vector<int> Menu::getInitParm()
 {
-    vector<string> paramsString = inputHandler.parseLine(currLine);
-    vector<int> params;
-    char * temp;
-    //convert the params from string to int
-    for (int i = 0; i < paramsString.size(); ++i)
-    {
-        int type = (int)strtol(paramsString[i].c_str(),&temp,DECIMAL);
-        bool typeExists = false;
-        for (int j = 1; j < params.size(); ++j)
-        {
-            if (params[j] == type) {
-                typeExists = true;
-                break;
-            }
-        }
-        if (!typeExists)
-            params.push_back(type);
-    }
-    return params;
+    return inputHandler.getInitParm(currLine);
 }
 
 /**
@@ -100,4 +82,11 @@ int Menu::getNextTask()
         getline(std::cin,currLine);
     } while (!inputHandler.checkLineValidation(currLine,inputHandler.getType(currLine)));
     return inputHandler.getType(currLine);
+}
+
+void Menu::sendResult(std::string result)
+{
+    if (result == "$")
+        return;
+    std::cout<< result <<std::endl;
 }

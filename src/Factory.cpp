@@ -1,11 +1,29 @@
 #include "Factory.h"
 
+
+
+BloomFilter* Factory::getBloomFilter()
+{
+    return bf;
+}
+
+bool Factory::isBfInit()
+{
+    return bfInitilize;
+}
+
+void Factory::setBfInit()
+{
+    bfInitilize = true;
+}
+
+
 /**
  * This function return an object of BloomFilter.
  * Input: inital data of the BloomFilter object.
  * Output: the BloomFilter object.
  */
-BloomFilter Factory::createBloomFilter(vector<int> initialParams)
+void Factory::createBloomFilter(vector<int> initialParams)
 {
     map<int, ICommand*> commands;
     vector<IHash*> hashes;
@@ -17,7 +35,7 @@ BloomFilter Factory::createBloomFilter(vector<int> initialParams)
     {
         hashes.push_back(createHashFunction(initialParams[i],initialParams[0]));
     }
-    return BloomFilter(initialParams[0], commands, hashes);
+    bf = new BloomFilter(initialParams[0], commands, hashes);
 }
 
 /**

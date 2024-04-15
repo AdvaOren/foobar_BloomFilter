@@ -44,7 +44,7 @@ set(TEST_FILES
         tests/inputHandler_test.cpp
         tests/menu_test.cpp
         tests/BF_test.cpp
-        )
+        src/Server.cpp src/Server.h src/ServerClientHandler.cpp src/ServerClientHandler.h)
 
 
 add_executable(BFTest ${TEST_FILES})

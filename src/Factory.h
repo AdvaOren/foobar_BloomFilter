@@ -20,10 +20,23 @@ using std::string;
 //This a factory class that help to create objects.
 class Factory
 {
+private:
+    BloomFilter* bf = nullptr;
+    bool bfInitilize = false;
+    Factory()= default;;
+
 public:
-    BloomFilter createBloomFilter(vector<int> initialParams);
+    static Factory& getInstance() {
+        static Factory instance;
+        return instance;
+    }
+    BloomFilter* getBloomFilter();
+    bool isBfInit();
+    void setBfInit();
+    void createBloomFilter(vector<int> initialParams);
     IHash* createHashFunction(int type, int size);
     IMenu* createMenu(int type);
+
 };
 
 

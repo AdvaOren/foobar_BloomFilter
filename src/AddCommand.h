@@ -7,7 +7,7 @@ using std::string;
 //This class is the command add. it is blocking urls.
 class AddCommand: public ICommand {
 public:
-    void execute(string URL, int* array, vector<IHash*> hashes,
+    string execute(string URL, int* array, vector<IHash*> hashes,
                  vector<string>* blackList) override;
 };
 
