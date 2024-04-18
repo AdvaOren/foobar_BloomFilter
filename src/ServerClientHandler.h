@@ -11,9 +11,14 @@
 #include "IMenu.h"
 #include "InputHandler.h"
 #include "Factory.h"
+#include "App.h"
 
 using std::string;
 
+/**
+ * Represents a handler for client-server communication.
+ * Inherits from the IMenu interface.
+ */
 class ServerClientHandler : public IMenu
 {
 private:

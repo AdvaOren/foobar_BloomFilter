@@ -14,16 +14,16 @@
 #include <sstream>
 
 #define PORT_SERVER 5555
+
 using std::string;
 
+/**
+ * Represents a server that listens for incoming client connections.
+ */
 class Server
 {
-private:
-    void handleClient(int clientSocket);
-
 public:
     static void startServer();
-
 };
 
 
