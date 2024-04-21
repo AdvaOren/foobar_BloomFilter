@@ -1,7 +1,7 @@
 #ifndef FOOBAR_DT_DOUBLEHASH_H
 #define FOOBAR_DT_DOUBLEHASH_H
 
-#include <IHash.h>
+#include "IHash.h"
 
 //This class perform hash function twice on the input.
 class DoubleHash: public IHash{

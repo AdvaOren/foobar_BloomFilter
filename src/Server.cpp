@@ -46,7 +46,7 @@ void Server::startServer()
         }
 
         // Create a new thread to handle the client connection
-        std::thread clientThread(&ServerClientHandler::handleClient, ServerClientHandler(client_sock));
+         std::thread clientThread(&ServerClientHandler::handleClient, ServerClientHandler(client_sock));
         clientThread.detach();
     }
 

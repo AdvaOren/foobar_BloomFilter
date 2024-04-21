@@ -7,10 +7,14 @@
  * */
 void App::run(IMenu* menu)
 {
+    pthread_mutex_t lock;
+
     Factory& factory = Factory::getInstance();
+    // Initialize the mutex
+    pthread_mutex_init(&lock, NULL);
+
     if (!factory.isBfInit())
     {
-        pthread_mutex_t lock;
         pthread_mutex_lock(&lock);
         if (!factory.isBfInit()) {
             factory.createBloomFilter(menu->getInitParm());
@@ -18,6 +22,8 @@ void App::run(IMenu* menu)
         }
         pthread_mutex_unlock(&lock);
     }
+    // Destroy the mutex when no longer needed
+    pthread_mutex_destroy(&lock);
     BloomFilter *bf = factory.getBloomFilter();
     string result;
     while (true) {
