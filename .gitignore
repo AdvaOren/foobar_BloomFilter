@@ -31,6 +31,7 @@
 *.exe
 *.out
 *.app
-/cmake-build-debug/
-/build/
+/src/cmake-build-debug/
+/src/build/
 /.idea/
+/src/.idea

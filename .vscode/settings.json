@@ -1,0 +1,6 @@
+{
+    "cmake.sourceDirectory": "/home/adva/Projects/foobar_DT/src",
+    "files.associations": {
+        "ostream": "cpp"
+    }
+}
