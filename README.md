@@ -39,13 +39,14 @@ A Bloom filter is a space-efficient probabilistic data structure used to test wh
 
 ```sh
 git clone https://github.com/yourusername/bloom-filter-project.git
-cd bloom-filter-project
+cd bloom-filter-project/cd
 ```
-
 ### Install Dependencies
 
 ```sh
-npm install
+cmake -S . -B build
+
+cmake --build build
 ```
 
 ## Configuration
@@ -71,7 +72,7 @@ BLACKLIST="example.com,example.net,example.org"
 ### Start the Server
 
 ```sh
-node server.js
+./build/project_main
 ```
 
 ### API Endpoints
